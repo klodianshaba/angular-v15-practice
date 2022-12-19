@@ -1,16 +1,36 @@
 import { Component } from '@angular/core';
 import {RouterLink, RouterOutlet, Routes} from "@angular/router";
+import {NavBarComponent} from "./components/nav-bar/nav-bar.component";
 @Component({
   selector: 'app-root',
   template:`
-    <div>{{title}}</div>
-    <div>rendered</div>
-    <a routerLink="/">home</a> <br>
-    <a routerLink="/lazy">lazy loading</a>
-    <router-outlet></router-outlet>
+    <style>
+      .background{
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        object-fit: cover;
+        z-index: 1 !important;
+      }
+      .app-container{
+        z-index: 2 !important;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+      }
+      .app-container h1{
+        text-align: center;
+      }
+    </style>
+    <img class="background" src="../assets/abstract-blue-technology-background-with-hexagons-vector.jpg" alt="background picture">
+    <div class="app-container">
+      <app-nav-bar></app-nav-bar>
+      <h1>Klodian Shaba</h1>
+      <router-outlet></router-outlet>
+    </div>
   `,
   styles: [],
-  imports: [RouterOutlet, RouterLink],
+  imports: [RouterOutlet, RouterLink, NavBarComponent],
   standalone: true
 })
 export class AppComponent {
